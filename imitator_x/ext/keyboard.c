@@ -664,10 +664,7 @@ void Init_keyboard(void)
     rb_funcall(rb_mKernel, rb_intern("print"), 3, RUBY_UTF8_STR("Found key combination file at '"), charfile_path, RUBY_UTF8_STR(".'\n"));
   
   /*Actually load the YAML file*/
-  hsh = rb_funcall(rb_const_get(rb_cObject, rb_intern("YAML")), rb_intern("load_file"), 1, charfile_path);
-  //~ hsh = rb_funcall(rb_const_get(rb_cObject, rb_intern("YAML")), rb_intern("load_file"), 1, rb_ary_entry(charfile_path, 0));
-  //~ hsh = rb_funcall(rb_const_get(rb_cObject, rb_intern("YAML")), rb_intern("load_file"), 1, rb_str_new2("/home/marvin/Programmieren/Projekte/Gems/imitator/imitator_x/lib/imitator_x_special_chars.yml"));
-  
+  hsh = rb_funcall(rb_const_get(rb_cObject, rb_intern("YAML")), rb_intern("load_file"), 1, charfile_path);  
   
   /*
   *This hash contains key combinations for special characters like the euro sign. 
