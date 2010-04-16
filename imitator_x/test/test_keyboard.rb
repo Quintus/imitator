@@ -27,7 +27,7 @@ require_relative "../lib/imitator/x"
 class KeyboardTest < Test::Unit::TestCase
   
   ASCII_STRING = "The quick brown fox jumped over the lazy dog"
-  UTF8_STRING = "ÄÖÜäöüßabc"
+  UTF8_STRING = "ÄÖÜä€öüßabc"
   ESCAPE_STRING = "This has\t2 escseqs: {Tab}!"
   INVALID_STRING = "Incorrect escape: {Nosuchkey}"
   
