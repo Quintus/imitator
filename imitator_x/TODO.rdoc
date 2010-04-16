@@ -1,0 +1,8 @@
+=TODO list
+This is the list of things planned but not done yet. 
+
+* Make XWindow#children return XWindow objects [Segfault problems]
+* Make XWindow.search searching recursive all children layers
+* Make Mouse.wheel accept the same parameters as Mouse.move
+* Implement for Clipboard.write the TIMESTAMP request
+* Take care of swapped mouse buttons for left-handed people

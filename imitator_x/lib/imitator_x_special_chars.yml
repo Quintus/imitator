@@ -1,0 +1,179 @@
+#Encoding: UTF-8
+################################################
+#Imitator for X is a library allowing you to fake input to systems using X11. 
+#Copyright © 2010 Marvin Gülker
+#
+#This file is part of Imitator for X.
+#
+#Imitator for X is free software: you can redistribute it and/or modify
+#it under the terms of the GNU Lesser General Public License as published by
+#the Free Software Foundation, either version 3 of the License, or
+#(at your option) any later version.
+#
+#Imitator for X is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU Lesser General Public License for more details.
+#
+#You should have received a copy of the GNU Lesser General Public License
+#along with Imitator for X.  If not, see <http://www.gnu.org/licenses/>.
+################################################
+#
+#This file instructs Imitator for X how to simulate characters 
+#that can't be faked just by pressing one key, i.e. those keys 
+#that need modifier keys like the [SHIFT], [ALT], [ALT_GR] keys pressed. 
+#Beside the regular key upcase combinations which are just 
+#simulated by pressing the [SHIFT] key and than hitting the wanted letter key 
+#before releasing the [SHIFT] key again it's highly keyboard and locale-dependant 
+#how a special character is created. For example, to create an @ character on 
+#a German keyboard you'd press [ALT_GR] + [Q]. In Switzerland, it's [ALT_GR] + [2]. 
+#Another one is the backslash - on my German keyboard I create one via [ALT_GR] + [ß], 
+#an american keyboard doesn't need a modifier key at all - it's there where on my keyboard the 
+#[Ä] or [Ü] key resides. 
+#
+#Since it's likely that the mappings in this file don't represent your keybaord, 
+#you can change them. Just look for the character that isn't simulated correctly, 
+#and change the key sequence to the one belonging to your keyboard. 
+#In order to do this correctly, you should use the keysym names shown to you 
+#when you manually press this key while running the "xev" program. 
+#( I reccomand using "xev | grep keysym"). 
+#
+#Also, if you change this file, you may want to email me at sutniuq<>gmx<>net, 
+#in the future I may then be able to code some kind of locale selector that automatically 
+#chooses the correct key combinations. 
+--- 
+#=========Regular key upcase mappings==========
+#You won't change these, won't you?
+A: Shift_L+a
+B: Shift_L+b
+C: Shift_L+c
+D: Shift_L+d
+E: Shift_L+e
+F: Shift_L+f
+G: Shift_L+g
+H: Shift_L+h
+I: Shift_L+i
+J: Shift_L+j
+K: Shift_L+k
+L: Shift_L+l
+M: Shift_L+m
+N: Shift_L+n
+O: Shift_L+o
+P: Shift_L+p
+Q: Shift_L+q
+R: Shift_L+r
+S: Shift_L+s
+T: Shift_L+t
+U: Shift_L+u
+V: Shift_L+v
+W: Shift_L+w
+X: Shift_L+x
+Y: Shift_L+y
+Z: Shift_L+z
+#==========Special letter mappings===========
+#Characters that are letters, but not defined in ASCII. 
+#Use this section for those parts of your local alphabet that 
+#isn't covered by ASCII. 
+Ä: Shift_L+adiaeresis
+Ö: Shift_L+odiaeresis
+Ü: Shift_L+udiaeresis
+ẞ: ISO_Level3_Shift+Shift+s
+á: dead_acute+a
+é: dead_acute+e
+#==========Special sign mappings=============
+#Non-letter chracters. 
+#Put in here those keys that doesn't have literal meaning in 
+#your language. 
+;: Shift_L+semicolon
+":": Shift_L+colon
+"_": Shift_L+underscore
+"'": Shift_L+apostrophe
+"*": Shift_L+asterisk
+">": Shift_L+greater
+"!": Shift_L+exclam
+"\"": Shift_L+quotedbl
+§: Shift_L+section
+$: Shift_L+dollar
+%: Shift_L+percent
+&: Shift_L+ampersand
+/: Shift_L+slash
+(: Shift_L+parenleft
+): Shift_L+parenright
+"=": Shift_L+equal
+"?": Shift_L+question
+°: Shift_L+degree
+¹: ISO_Level3_Shift+onesuperior
+²: ISO_Level3_Shift+twosuperior
+³: ISO_Level3_Shift+threesuperior
+¼: ISO_Level3_Shift+onequarter
+½: ISO_Level3_Shift+onehalf
+¬: ISO_Level3_Shift+notsign
+"{": ISO_Level3_Shift+braceleft
+"[": ISO_Level3_Shift+bracketleft
+"]": ISO_Level3_Shift+bracketright
+"}": ISO_Level3_Shift+braceright
+\: ISO_Level3_Shift+backslash
+@: ISO_Level3_Shift+at
+ł: ISO_Level3_Shift+lstroke
+€: ISO_Level3_Shift+EuroSign
+¶: ISO_Level3_Shift+paragraph
+ŧ: ISO_Level3_Shift+tslash
+←: ISO_Level3_Shift+leftarrow
+↓: ISO_Level3_Shift+downarrow
+→: ISO_Level3_Shift+rightarrow
+ø: ISO_Level3_Shift+oslash
+þ: ISO_Level3_Shift+thorn
+æ: ISO_Level3_Shift+ae
+ſ: ISO_Level3_Shift+U017F
+ð: ISO_Level3_Shift+eth
+đ: ISO_Level3_Shift+dstroke
+ŋ: ISO_Level3_Shift+eng
+ħ: ISO_Level3_Shift+hstroke
+ĸ: ISO_Level3_Shift+kra
+ł: ISO_Level3_Shift+lstroke
+|: ISO_Level3_Shift+bar
+»: ISO_Level3_Shift+guillemotright
+«: ISO_Level3_Shift+guillemotleft
+¢: ISO_Level3_Shift+cent
+„: ISO_Level3_Shift+doublelowquotemark
+“: ISO_Level3_Shift+leftdoublequotemark
+”: ISO_Level3_Shift+rightdoublequotemark
+µ: ISO_Level3_Shift+mu
+·: ISO_Level3_Shift+periodcentered
+…: ISO_Level3_Shift+U2026
+–: ISO_Level3_Shift+endash
+¡: ISO_Level3_Shift+Shift+exclamdown
+⅛: ISO_Level3_Shift+Shift+oneeigth
+£: ISO_Level3_Shift+Shift+sterling
+¤: ISO_Level3_Shift+Shift+currency
+⅜: ISO_Level3_Shift+Shift+threeeights
+⅝: ISO_Level3_Shift+Shift+fiveeights
+⅞: ISO_Level3_Shift+Shift+seveneights
+™: ISO_Level3_Shift+Shift+trademark
+±: ISO_Level3_Shift+Shift+plusminus
+¿: ISO_Level3_Shift+Shift+questiondown
+Ω: ISO_Level3_Shift+Shift+Greek_OMEGA
+Ł: ISO_Level3_Shift+Shift+Lstroke
+®: ISO_Level3_Shift+Shift+registered
+Ŧ: ISO_Level3_Shift+Shift+Tslash
+¥: ISO_Level3_Shift+Shift+yen
+↑: ISO_Level3_Shift+Shift+uparrow
+ı: ISO_Level3_Shift+Shift+idotless
+Ø: ISO_Level3_Shift+Shift+Oslash
+Þ: ISO_Level3_Shift+Shift+THORN
+Æ: ISO_Level3_Shift+Shift+AE
+Ð: ISO_Level3_Shift+Shift+ETH
+ª: ISO_Level3_Shift+Shift+ordfeminine
+Ŋ: ISO_Level3_Shift+Shift+ENG
+Ħ: ISO_Level3_Shift+Shift+Hstroke
+¦: ISO_Level3_Shift+Shift+brokenbar
+›: ISO_Level3_Shift+Shift+U203A
+‹: ISO_Level3_Shift+Shift+U2039
+©: ISO_Level3_Shift+Shift+copyright
+‚: ISO_Level3_Shift+Shift+singlelowquotemark
+‘: ISO_Level3_Shift+Shift+leftsinglequotemark
+’: ISO_Level3_Shift+Shift+rightsinglequotemark
+º: ISO_Level3_Shift+Shift+masculine
+×: ISO_Level3_Shift+Shift+multiply
+÷: ISO_Level3_Shift+Shift+division
+—: ISO_Level3_Shift+Shift+emdash
