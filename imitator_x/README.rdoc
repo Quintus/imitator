@@ -1,9 +1,13 @@
 =Imitator for X
-The Imitator for X library brings input automation to Linux by a C extension written for Ruby. You can fake keyboard and mouse input, just as if an user sits in front of a computer and presses and releases keys or moves the mouse. Additionally, you get control of the CD/DVD devices and the windows displayed on the screen, properly wrapped as Ruby objects. As an useful extra, clipboard access is provided. 
+The Imitator for X library brings input automation to Linux by a C extension written for Ruby. 
+You can fake keyboard and mouse input, just as if an user sits in front of a computer and presses and 
+releases keys or moves the mouse. Additionally, you get control of the CD/DVD devices and the windows displayed 
+on the screen, properly wrapped as Ruby objects. As an useful extra, clipboard access is provided. 
 ==Installation
 Just as always. 
   # gem install imitator_x
-You need to have the X11 libraries (should be available on every system using X11) and the development headers of the XTEST extension or compiling will fail. On Ubuntu, you do a 
+You need to have the X11 libraries (should be available on every system using X11) and the development 
+headers of the XTEST extension or compiling will fail. On Ubuntu, you do a 
   sudo apt-get install libxtst-dev
 or use +aptitude+ or Synaptic or whatever package manager you like. It shouldn't be hard to obtain the package for other systems. 
 ==Usage
@@ -16,6 +20,12 @@ or use +aptitude+ or Synaptic or whatever package manager you like. It shouldn't
   #Or kill an opened window
   xwin = Imitator::X::XWindow.from_title(/gedit/)
   xwin.kill
+==Note for non-gem use and debugging
+If you don't want to use Imitator for X as a gem, for example for debugging purposes, you will have to set the 
+gobal variable $imitator_x_charfile_path to the path of your "imitator_x_special_chars.yml" 
+file (which contains the key combinations for creating characters like @)  _before_ you require "imitator/x", 
+because otherwise Imitator for X isn't able to find that file (or if you have a non-gem version *and* 
+the gem installed you'll get the gem's file). 
 ==Author
   Marvin Gülker
   You can contact me at sutniuq<>gmx<>net. 

@@ -71,7 +71,7 @@ DESC
   s.email = "sutniuq<>gmx<>net"
   s.platform = Gem::Platform::RUBY #BUT it's Linux-only
   s.required_ruby_version = ">=1.9"
-  s.files = [Dir["lib/**/*.rb"], Dir["ext/**/**.c"], Dir["ext/**/*.h"], Dir["test/*.rb"], "ext/extconf.rb", "Rakefile.rb", "README.rdoc", "TODO.rdoc", "COPYING.rdoc", "COPYING.LESSER.rdoc"].flatten
+  s.files = [Dir["lib/**/*.rb"], Dir["ext/**/**.c"], Dir["ext/**/*.h"], Dir["test/*.rb"], "ext/extconf.rb", "lib/imitator_x_special_chars.yml", "Rakefile.rb", "README.rdoc", "TODO.rdoc", "COPYING.rdoc", "COPYING.LESSER.rdoc"].flatten
   s.extensions << "ext/extconf.rb"
   s.has_rdoc = true
   s.extra_rdoc_files = %w[README.rdoc TODO.rdoc COPYING.rdoc COPYING.LESSER.rdoc ext/x.c ext/xwindow.c ext/mouse.c ext/clipboard.c ext/keyboard.c] #Why doesn't RDoc document the C files automatically?

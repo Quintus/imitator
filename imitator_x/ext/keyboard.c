@@ -57,6 +57,12 @@ along with Imitator for X.  If not, see <http://www.gnu.org/licenses/>.
 *The best way to find out how keys are generated is to run the following command 
 *and then press the wanted key: 
 *  xev | grep keysym
+*
+*==Note to debuggers
+*When you're debugging Imitator for X and you don't want to 
+*use the "imitator_x_special_chars.yml" file of an already installed gem 
+*you should set the global variable $imitator_x_charfile_path to the 
+*path of the file you want to use before you require "imitator/x". 
 */
 
 /********************Helper functions***********************/
@@ -633,17 +639,35 @@ static VALUE m_method_missing(int argc, VALUE argv[], VALUE self)
 void Init_keyboard(void)
 {
   VALUE hsh;
-  //~ VALUE charfile_path;
+  VALUE charfile_path;
   
   Keyboard = rb_define_module_under(X, "Keyboard");
   
-  /*It would be a very long and unneccassary work to define all the key symbol aliases here. 
+  /*It would be a very long and unneccassary work to define all the key combinations here. 
   *Instead, to shorten this and because YAML is in the Stdlib, I made a YAML file for this and load 
   *it. This also allows you to modify the alias list at runtime. 
   *Thanks to Ruby 1.9, the Gem module is loaded by default and I can use it to search for my character aliases file. */
-  //~ charfile_path = rb_funcall(rb_const_get(rb_cObject, rb_intern("Gem")), rb_intern("find_files"), 1, rb_str_new2("imitator_x_special_chars.yml"));
-  //~ hsh = rb_funcall(rb_const_get(rb_cObject, rb_intern("YAML")), rb_intern("load_file"), 1, rb_ary_entry(charfile_path[0]));
-  hsh = rb_funcall(rb_const_get(rb_cObject, rb_intern("YAML")), rb_intern("load_file"), 1, rb_str_new2("/home/marvin/Programmieren/Projekte/Gems/imitator_x/lib/imitator_x_special_chars.yml"));
+  if(RTEST(rb_gv_get("$imitator_x_charfile_path"))) /*This allows to override the default search path - important for debugging where the gem is not installed*/
+    charfile_path = rb_str_export_to_enc(rb_gv_get("$imitator_x_charfile_path"), rb_utf8_encoding());
+  else
+  {
+    /*Use Gem.find_files("imitator_x_special_chars.yml") to get the file*/
+    charfile_path = rb_funcall(rb_const_get(rb_cObject, rb_intern("Gem")), rb_intern("find_files"), 1, RUBY_UTF8_STR("imitator_x_special_chars.yml"));
+    /*Check if we found a file and raise an error if not*/
+    if (RTEST(rb_funcall(charfile_path, rb_intern("empty?"), 0)))
+      rb_raise(rb_eRuntimeError, "Could not find file 'imitator_x_special_chars.yml'!");
+    /*Get the first found file and ensure that we got it in UTF-8*/
+    charfile_path = rb_str_export_to_enc(rb_ary_entry(charfile_path, 0), rb_utf8_encoding());
+  }
+  
+  if (RTEST(rb_gv_get("$DEBUG")))
+    rb_funcall(rb_mKernel, rb_intern("print"), 3, RUBY_UTF8_STR("Found key combination file at '"), charfile_path, RUBY_UTF8_STR(".'\n"));
+  
+  /*Actually load the YAML file*/
+  hsh = rb_funcall(rb_const_get(rb_cObject, rb_intern("YAML")), rb_intern("load_file"), 1, charfile_path);
+  //~ hsh = rb_funcall(rb_const_get(rb_cObject, rb_intern("YAML")), rb_intern("load_file"), 1, rb_ary_entry(charfile_path, 0));
+  //~ hsh = rb_funcall(rb_const_get(rb_cObject, rb_intern("YAML")), rb_intern("load_file"), 1, rb_str_new2("/home/marvin/Programmieren/Projekte/Gems/imitator/imitator_x/lib/imitator_x_special_chars.yml"));
+  
   
   /*
   *This hash contains key combinations for special characters like the euro sign. 
