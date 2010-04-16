@@ -57,12 +57,6 @@ along with Imitator for X.  If not, see <http://www.gnu.org/licenses/>.
 *The best way to find out how keys are generated is to run the following command 
 *and then press the wanted key: 
 *  xev | grep keysym
-*
-*==Note to debuggers
-*When you're debugging Imitator for X and you don't want to 
-*use the "imitator_x_special_chars.yml" file of an already installed gem 
-*you should set the global variable $imitator_x_charfile_path to the 
-*path of the file you want to use before you require "imitator/x". 
 */
 
 /********************Helper functions***********************/
