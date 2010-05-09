@@ -78,6 +78,7 @@ DESC
   s.rdoc_options << "-t" << "Imitator for X: RDocs" << "-m" << "README.rdoc" << "-c" << "ISO-8859-1"
   s.test_files = Dir["test/test_*.rb"]
   #s.rubyforge_project = 
+  s.homepage = "http://github.com/Quintus/imitator"
 end
 Rake::GemPackageTask.new(spec).define
 
