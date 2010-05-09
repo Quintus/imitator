@@ -1,0 +1,12 @@
+h1. Imitator
+
+The Imitator project was born when I realized, that my main automation project, "Automations":http://github.com/Quintus/Automations, depends on quite many external resources. For example, the Linux variant, @xdo@, depends on @xdotool@ as well as other command-line tools being installed and @au3@ only works if you have AutoItX3 installed. 
+Therefore, I created Imitator. This library aims to support the same features as the Automations project, but just by using the C interface of the X server and Microsoft® Windows®. At this point, I've already managed to get the Linux part up and running, although it doesn't offer all the capabilities @xdo@ does. So, if you've problems installing xdotool or one of the other command line tools, try the @imitator_x@ gem. 
+
+For now I just offer a gem for automating the X server, since although I found out how to use the Win32API to do Automation I wasn't able to find out how I get the neccassary process privileges on Windows® Vista and later to finally _run_ this functions. At the moment, the only way I know of is running the program with administrator rights. If you know how to do it better (at least it *is* possible, AutoIt doesn't need admin rights!) just send an email to sutniuq@gmx@@net. 
+
+So far, have fun with the @imitator_x@ gem. 
+
+h2. Documentation issues
+
+There's a known problem when generating the RDoc of @imitator_x@. During installation, RDoc may say something like "Imitator: Enclosing class or module not known" what means you missed the main part of the docs. I'm not sure in which order RDoc documents the files in the _ext/_ directory, but sometimes it seems that it doesn't work out well. If you get that error, just regenerate the documentation with @gem rdoc imitator_x --overwrite@ or, if you prefer the hanna RDoc template as I do, @hanna --gems imitator_x@. 
