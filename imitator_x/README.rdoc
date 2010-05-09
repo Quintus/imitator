@@ -2,7 +2,11 @@
 The Imitator for X library brings input automation to Linux by a C extension written for Ruby. 
 You can fake keyboard and mouse input, just as if an user sits in front of a computer and presses and 
 releases keys or moves the mouse. Additionally, you get control of the CD/DVD devices and the windows displayed 
-on the screen, properly wrapped as Ruby objects. As an useful extra, clipboard access is provided. 
+on the screen, properly wrapped as Ruby objects. As an useful extra, (experimental) clipboard access is provided. 
+
+This project is related to Automations[http://github.com/Quintus/Automations], but tries to skip external dependencies 
+to the smallest amount possible. So far, you only need +eject+ which you probably should have installed if you have 
+a CD/DVD-ROM drive. 
 ==Installation
 Just as always. 
   # gem install imitator_x
