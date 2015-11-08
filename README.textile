@@ -1,3 +1,7 @@
+h1. Abandoned project
+
+I abandoned this project. Do not use it if you don’t want to maintain it.
+
 h1. Imitator
 
 The Imitator project was born when I realized, that my main automation project, "Automations":http://github.com/Quintus/Automations, depends on quite many external resources. For example, the Linux variant, @xdo@, depends on @xdotool@ as well as other command-line tools being installed and @au3@ only works if you have AutoItX3 installed. 
